@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	<!-- Below Student class example shows bean can support collections like 
+		<set>,<list>,<Map>.<props>i.e properties class -->
+	<bean id="std" class="com.prowings.Student">
+		<property name="id" value="10" />
+		<property name="name" value="Ram" />
+		<property name="addresses">
+			<list>
+				<ref bean="addr" />
+				<ref bean="addr1" />
+
+			</list>
+		</property>
+
+		<property name="character">
+			<set>
+				<value>Polite</value>
+				<value>Kind</value>
+				<value>Hard Working</value>
+				<value>Hard Working</value>
+			</set>
+		</property>
+	</bean>
+	<bean id="addr" class="com.prowings.Address">
+		<property name="pin" value="101" />
+		<property name="city" value="Pune" />
+		<property name="country" value="India" />
+	</bean>
+	<bean id="addr1" class="com.prowings.Address">
+		<property name="pin" value="102" />
+		<property name="city" value="Mumbai" />
+		<property name="country" value="India" />
+
+	</bean>
+	<bean id="emp" class="com.prowings.Employee">
+
+		<!--Dependency Injection trough -Setter Method Injection -->
+		<property name="eId" value="1"></property>
+		<property name="eName" value="Ram"></property>
+		<property name="eDept" value="IT"></property>
+		<property name="details">
+			<map>
+				<entry key="2" value="yyy" />
+				<entry key="1" value="xxx" />
+				<entry key="1" value="mmm" />
+				<entry key="3" value="zzz" />
+			</map>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="aa">12</prop>
+				<prop key="bb">13</prop>
+				<prop key="cc">14</prop>
+			</props>
+		</property>
+
+
+		<!-- Dependency Injection trough -Constructor Injection -->
+		<!-- <constructor-arg type="java.lang.Integer" index="1" name="eName" value="Raghav"></constructor-arg> 
+			<constructor-arg index="0" name="eId" value="2"></constructor-arg> <constructor-arg 
+			index="2" name="eDept" value="Account"></constructor-arg> <constructor-arg 
+			name="details"> <map> <entry key="10" value="aaa"></entry> <entry key="20" 
+			value="bbb"></entry> <entry key="30" value="ccc"></entry> </map> </constructor-arg> -->
+
+
+	</bean>
+
+</beans>

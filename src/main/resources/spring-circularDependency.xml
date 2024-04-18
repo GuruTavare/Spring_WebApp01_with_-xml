@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+	<!-- Setter Injection -->
+	<!-- <bean id="A" class="com.prowings.circularDependency.A">
+		<constructor-arg name="b" ref="B" />
+		<property name="b" ref="B" />
+	</bean>
+	<bean id="B" class="com.prowings.circularDependency.B">
+		<constructor-arg name="a" ref="A" />
+		<property name="a" ref="A" />
+	</bean> -->
+	
+<!-- @Post-construct	
+	<bean id="a" class="com.prowings.circularDependency.A" init-method="init" autowire="byType"/>
+	<bean id="b" class="com.prowings.circularDependency.B"/> -->
+	
+	
+	<!--by implementing ApplicationContextAware(I) and InitializingBean(I)  -->
+	 <bean id="a" class="com.prowings.circularDependency.A2" autowire="byType" />
+  <bean id="b" class="com.prowings.circularDependency.B" />
+</beans>
